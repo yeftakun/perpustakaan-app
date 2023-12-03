@@ -1,0 +1,29 @@
+<!-- templates/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ myname }}!</h1>
+    <h2>Data Biaya Denda</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Harga Denda</th>
+            <th>Status</th>
+            <th>Tanggal Tetap</th>
+        </tr>
+        {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
