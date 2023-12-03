@@ -7,8 +7,9 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>Welcome, {{ myname }}!</h1>
-    <h2>Data Biaya Denda</h2>
+    <h2>Welcome {{ myname }} ({{mylevel}})</h2>
+    <a href="http://127.0.0.1:5000">Logout</a>
+    <!-- <h2>Data Biaya Denda</h2>
     <table border="1">
         <tr>
             <th>ID</th>
@@ -23,7 +24,9 @@
                 <td>{{ row[2] }}</td>
                 <td>{{ row[3] }}</td>
             </tr>
-        {% endfor %}
+        {% endfor %} -->
+    <h3>Jumlah Buku Tersedia: {{ countbook }}</h3>
+    <h3>Anda meminjam: {{ countpinjam }}</h3>
     </table>
 </body>
 </html>
