@@ -5,30 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+        }
+
+        body, h1, h2, h3, p, ul, li, a {
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px;
+            height: 100vh;
+            color: white;
+            width: 200px;
+            position: fixed;
+            font-size: medium;
+            transition: width 0.5s;
+        }
+
+        nav a:hover{
+            color: cadetblue;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        main {
+            margin-left: 0;
+            margin-top: 20px;
+            padding: 30px;
+            transition: margin-left 0.5s;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .menu-btn {
+            font-size: small;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #333;
+            border: none;
+            color: white;
+            margin-bottom: 5px;
+            margin-top: 10;
+            transition: padding 0.5s;
+        }
+    </style>
+    <script>
+        function toggleNav() {
+            const nav = document.getElementById('mySidenav');
+            const main = document.querySelector('main');
+            const menuBtn = document.querySelector('.menu-btn');
+            const navList = document.querySelector('nav ul');
+            
+            if (nav.style.width === '200px') {
+                nav.style.width = '0';
+                main.style.marginLeft = '0';
+                menuBtn.style.paddingLeft = '10px';
+                navList.style.maxHeight = '0';
+            } else {
+                nav.style.width = '200px';
+                main.style.marginLeft = '200px';
+                menuBtn.style.paddingLeft = '150px';
+                navList.style.maxHeight = '300px'; // Adjust the max-height as needed
+            }
+        }
+    </script>
 </head>
 <body>
-    <h2>Welcome {{ myname }} ({{mylevel}})</h2>
-    <a href="http://127.0.0.1:5000">Logout</a>
-    <!-- <h2>Data Biaya Denda</h2>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Harga Denda</th>
-            <th>Status</th>
-            <th>Tanggal Tetap</th>
-        </tr>
-        {% for row in data %}
-            <tr>
-                <td>{{ row[0] }}</td>
-                <td>{{ row[1] }}</td>
-                <td>{{ row[2] }}</td>
-                <td>{{ row[3] }}</td>
-            </tr>
-        {% endfor %} -->
-    <h3>User terdaftar: {{countuser}}</h3>
-    <h3>Jumlah Buku: {{ countbook }}</h3>
-    <h3>Jumlah Pinjam: {{ countpinjam }}</h3>
-    <h3>Jumlah Kembali: {{ countkembali }}</h3>
-    </table>
+    <nav id="mySidenav">
+        <button class="menu-btn" onclick="toggleNav()">☰ Menu</button>
+        <ul>
+            <li><a href="http://127.0.0.1:5000">Logout</a></li>
+            <li><a href="http://127.0.0.1:5000/data_pengguna">Data Pengguna</a></li>
+            <li><a href="http://127.0.0.1:5000/data_buku">Data Buku</a></li>
+            <li><a href="http://127.0.0.1:5000/kategori">Kategori</a></li>
+            <li><a href="http://127.0.0.1:5000/rak">Rak</a></li>
+            <li><a href="http://127.0.0.1:5000/peminjaman">Peminjaman</a></li>
+            <li><a href="http://127.0.0.1:5000/pengembalian">Pengembalian</a></li>
+            <li><a href="http://127.0.0.1:5000/denda">Denda</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Welcome {{ myname }} ({{mylevel}})</h2>
+        <!-- Content of the dashboard -->
+        <h3>User terdaftar: {{countuser}}</h3>
+        <h3>Jumlah Buku: {{ countbook }}</h3>
+        <h3>Jumlah Pinjam: {{ countpinjam }}</h3>
+        <h3>Jumlah Kembali: {{ countkembali }}</h3>
+    </main>
 </body>
 </html>
